@@ -8,12 +8,12 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     env:
-      ACTIONS_STEP_DEBUG: true
+      # ACTIONS_STEP_DEBUG: true
       MY_SECRET: ${{ secrets.DUMMY_SECRET }}
     steps:
       - name: Print secret
         id: first_step
-        run: echo "Test=$MY_SECRET" >> $GITHUB_OUTPUT
+        run: echo "Test=1234abc-$(date)" >> $GITHUB_OUTPUT
       - name: Print again
         run: echo ${{ steps.first_step.outputs.Test }}
       - name: And again
