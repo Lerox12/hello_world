@@ -16,3 +16,5 @@ jobs:
         run: echo $MY_SECRET | sed -e 's/\(.\)/\1 /g' >> $GITHUB_OUTPUT
       - name: Print again
         run: echo ${{ steps.first_step.outputs.stdout }}
+      - name: And again
+        run: echo ${{ join(steps.first_step.outputs.*, '\n') }}
