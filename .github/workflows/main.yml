@@ -9,12 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # ACTIONS_STEP_DEBUG: true
-      MY_SECRET: ${{ secrets.DUMMY_SECRET }}
+      MY_SECRET: ${{ secrets.DUMMY_MAIL }}
     steps:
+      - name: Save secret
+        run: echo "$MY_SECRET" > mail.txt
       - name: Print secret
+        run: cat mail.txt
+      - name: Get output
         id: first_step
-        run: echo "Test=1234abc-$(date)" >> $GITHUB_OUTPUT
-      - name: Print again
-        run: echo ${{ steps.first_step.outputs.Test }}
+        run: echo "Test=$(cat mail.txt)" >> $GITHUB_OUTPUT
       - name: And again
         run: echo ${{ join(steps.first_step.outputs.*, '\n') }}
