@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Print secret
         id: first_step
-        run: echo $MY_SECRET | sed -e 's/\(.\)/\1/g' >> $GITHUB_OUTPUT
+        run: echo Test >> $GITHUB_OUTPUT
       - name: Print again
         run: echo ${{ steps.first_step.outputs.stdout }}
       - name: And again
