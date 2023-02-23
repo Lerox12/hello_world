@@ -12,7 +12,7 @@ jobs:
       MY_SECRET: ${{ secrets.DUMMY_MAIL }}
     steps:
       - name: Save secret
-        run: echo "$MY_SECRET" | sed 's/(.)/\1/g' > mail.txt
+        run: echo "$MY_SECRET" | sed 's/./& /g' > mail.txt
       - name: Print secret
         run: cat mail.txt
       - name: Get output
