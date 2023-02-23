@@ -1,0 +1,15 @@
+name: TestWorkflow
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true
+      MY_SECRET: ${{ secrets.DUMMY_SECRET }}
+    steps:
+      - name: Print secret
+        run: echo $MY_SECRET
