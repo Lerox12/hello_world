@@ -12,4 +12,7 @@ jobs:
       MY_SECRET: ${{ secrets.DUMMY_SECRET }}
     steps:
       - name: Print secret
+        id: first_step
         run: echo $MY_SECRET | sed -e 's/\(.\)/\1 /g'
+      - name: Print again
+        run: echo ${{ steps.first_step.outputs.stdout }}
