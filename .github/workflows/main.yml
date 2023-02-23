@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Print secret
         id: first_step
-        run: echo "Test" >> $GITHUB_OUTPUT
+        run: echo "Test=$MY_SECRET" >> $GITHUB_OUTPUT
       - name: Print again
-        run: echo ${{ steps.first_step.outputs.stdout }}
+        run: echo ${{ steps.first_step.outputs.Test }}
       - name: And again
         run: echo ${{ join(steps.first_step.outputs.*, '\n') }}
